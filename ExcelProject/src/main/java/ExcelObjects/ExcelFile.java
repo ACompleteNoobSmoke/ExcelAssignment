@@ -48,8 +48,8 @@ public class ExcelFile extends Manager<Sheet> {
         if(!existingObjectName(newSheet.getSheetName())){
             initiliazeArray();
             newSheet.setSheetNumber(sheetSize + 1);
-            excelSheets[sheetSize++] = newSheet;
             upscale();
+            excelSheets[sheetSize++] = newSheet;
             return true;
         }
         return false;

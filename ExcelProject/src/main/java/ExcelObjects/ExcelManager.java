@@ -7,7 +7,7 @@ public class ExcelManager extends Manager<ExcelFile> {
     private ExcelFile []files;
     private static int fileSize;
 
-    public ExcelManager(String fileName, int fileNumber){
+    public ExcelManager(){
       this.fileSize = 0;
     }
 
@@ -28,6 +28,7 @@ public class ExcelManager extends Manager<ExcelFile> {
             ExcelFile newFiles[] = new ExcelFile[fileSize + 1];
             for(int i = 0; i < fileSize; i++){
                 newFiles[i] = files[i];
+                newFiles[i].setFileNumber(i+1);
             }
             files = newFiles;
         }
@@ -39,8 +40,8 @@ public class ExcelManager extends Manager<ExcelFile> {
         if(!existingObjectName(newExcelFile.getFileName())){
             initiliazeArray();
             newExcelFile.setFileNumber(fileSize + 1);
-            files[fileSize++] = newExcelFile;
             upscale();
+            files[fileSize++] = newExcelFile;
             return true;
         }
         return false;
