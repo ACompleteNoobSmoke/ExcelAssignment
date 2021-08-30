@@ -1,4 +1,6 @@
-package ExcelObjects;
+package ObjectManager;
+
+import ExcelObjects.ExcelFile;
 
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
@@ -126,5 +128,4 @@ public class ExcelManager extends Manager<ExcelFile> {
             }
         }
     }
-
 }

@@ -1,11 +1,6 @@
-package ExcelObjects;
+package ObjectManager;
 
-import LinkedLists.Sheet;
-
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-
-abstract class Manager<T> {
+public abstract class Manager<T> {
 
 
 

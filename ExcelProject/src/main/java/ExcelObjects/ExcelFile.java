@@ -1,6 +1,7 @@
 package ExcelObjects;
 
 import LinkedLists.Sheet;
+import ObjectManager.Manager;
 
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;

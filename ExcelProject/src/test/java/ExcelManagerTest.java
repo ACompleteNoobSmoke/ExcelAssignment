@@ -1,6 +1,5 @@
 import ExcelObjects.ExcelFile;
-import ExcelObjects.ExcelManager;
-import LinkedLists.Sheet;
+import ObjectManager.ExcelManager;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +24,7 @@ public class ExcelManagerTest {
     }
 
     @Test
-    @DisplayName("Tesing Multiple Additions")
+    @DisplayName("Testing Multiple Additions")
     public void testingMultipleAdditions(){
         assertTrue(eManager.add(getFile(1)));
         assertTrue(eManager.add(getFile(2)));
@@ -91,9 +90,4 @@ public class ExcelManagerTest {
         System.out.println("*** After Updating ***");
         eManager.showAll();
     }
-
-
-
-
-
 }
