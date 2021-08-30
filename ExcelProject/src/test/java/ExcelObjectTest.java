@@ -64,10 +64,20 @@ public class ExcelObjectTest {
        newFile.add(getNewSheet(2));
        System.out.println("\nBefore Deletion");
        newFile.showAll();
-       assertTrue(newFile.remove("SheetFile2"));
+       assertTrue(newFile.remove("SheetFile1"));
        System.out.println("\nAfter Deletion");
        newFile.showAll();
        System.out.println(newFile.getSheetSize());
+    }
+
+    @Test
+    @DisplayName("Add Delete Add")
+    public void addDeleteAdd(){
+       newFile.add(getNewSheet(1));
+       newFile.add(getNewSheet(2));
+       assertTrue(newFile.remove("SheetFile1"));
+       assertTrue(newFile.add(getNewSheet(3)));
+       newFile.showAll();
     }
 
     @Test
