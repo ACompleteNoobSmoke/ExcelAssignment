@@ -4,6 +4,7 @@ import ObjectManager.ExcelManager;
 
 public class User {
     private final String firstName;
+    
     private final String lastName;
     private final String userName;
     private final String passWord;

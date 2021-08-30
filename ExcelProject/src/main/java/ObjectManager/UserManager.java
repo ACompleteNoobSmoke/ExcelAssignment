@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 public class UserManager extends Manager<User> {
 
     private User[] userProfiles;
+
     private static int userSize;
 
     public UserManager(){
@@ -22,7 +23,7 @@ public class UserManager extends Manager<User> {
     //Check if the names are the same
     private BiPredicate<String, User> sameName = (n, e) -> e.getUserName().equalsIgnoreCase(n);
     //Supply File size
-    public int getuserSize(){ return userSize;}
+    public int getUserSize(){ return userSize;}
 
     @Override
     //Upscale the ExceluserProfiles array
