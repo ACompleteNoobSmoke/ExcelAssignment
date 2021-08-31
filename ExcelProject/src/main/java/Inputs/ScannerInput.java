@@ -18,6 +18,9 @@ public class ScannerInput {
     //Supplies the ability to get String;
     public Supplier<String> supplyString = () ->  scan.nextLine();
 
+    //
+    public Supplier<Scanner> supplyScan = () -> scan;
+
     //Supplies the ability to get Character.
     public Supplier<Character> supplyChar = () -> setChar();
 

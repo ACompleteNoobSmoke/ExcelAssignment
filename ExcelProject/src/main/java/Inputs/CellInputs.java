@@ -19,4 +19,13 @@ public class CellInputs extends ScannerInput {
         }
         return row;
     }
+
+    public String setContent(){
+        String content = "";
+        while(content.isBlank()){
+            System.out.print("Please Enter Content: ");
+            content = supplyString.get();
+        }
+        return content;
+    }
 }

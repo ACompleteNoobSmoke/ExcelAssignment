@@ -1,5 +1,9 @@
 package Inputs;
 
+import ObjectManager.UserManager;
+
+import java.util.function.BiFunction;
+
 public class UserInput extends ScannerInput{
 
     public String setUserFirstName(){
@@ -28,6 +32,26 @@ public class UserInput extends ScannerInput{
         }
         return userName;
     }
+
+    public String setUserName2(UserManager uManager){
+        boolean exists = true;
+        String userName = "";
+        while(exists) {
+            userName = setUserName();
+            exists = setUserNameAndValidate.apply(userName, uManager);
+            userNameErrorMessage(exists, userName);
+        }
+        return userName;
+    }
+
+    private void userNameErrorMessage(boolean exists, String userName){
+        if(exists){
+            System.out.println("\nUserName: " + userName + " Already Exists In Database!\n");
+        }
+
+    }
+
+    public BiFunction<String, UserManager, Boolean> setUserNameAndValidate = (n, u) -> u.getObjectByName(n) != null;
 
     public String setPassword(){
         String passWord = "";

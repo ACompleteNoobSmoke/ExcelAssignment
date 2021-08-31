@@ -2,6 +2,7 @@ package ObjectManager;
 
 import Model.User;
 
+import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
@@ -21,7 +22,9 @@ public class UserManager extends Manager<User> {
     //Check if the userSize is zero
     private Predicate<Integer> isEmpty = size -> size.equals(0);
     //Check if the names are the same
-    private BiPredicate<String, User> sameName = (n, e) -> e.getUserName().equalsIgnoreCase(n);
+    private BiPredicate<String, User> sameName = (n, e) -> e.getUserName().equals(n);
+    //Check if the names are the same
+    private BiPredicate<String,  User> samePassword = (n, e) -> e.getPassWord().equals(n);
     //Supply File size
     public int getUserSize(){ return userSize;}
 
@@ -105,6 +108,16 @@ public class UserManager extends Manager<User> {
     public User getObjectByName(String UserName){
         for(int i = 0; i < userSize; i++){
             if(sameName.test(UserName, userProfiles[i])) return userProfiles[i];
+        }
+        return null;
+    }
+
+    //Get User from array by username & password.
+    public User getObjectByNameAndPassword(String UserName, String PassWord){
+        for(int i = 0; i < userSize; i++){
+            if(sameName.test(UserName, userProfiles[i]) &&
+                    samePassword.test(PassWord, userProfiles[i]))
+                return userProfiles[i];
         }
         return null;
     }
