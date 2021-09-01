@@ -13,7 +13,7 @@ public class ScannerInput {
     private Predicate<String> charTooLong = x -> x.length() > 1;
 
     //Character is not an alphabet
-    private  Predicate<String> notAlphabet = x -> x.charAt(0) < 'A' || x.charAt(0) > 'Z';
+    private  Predicate<String> notAlphabet = x -> x.isEmpty() || (x.charAt(0) < 'A' || x.charAt(0) > 'Z');
 
     //Supplies the ability to get String;
     public Supplier<String> supplyString = () ->  scan.nextLine();
@@ -40,7 +40,7 @@ public class ScannerInput {
 
     //Modify character input
     private char setChar(){
-        String newChar = " ";
+        String newChar = "";
         newChar = supplyString.get();
         newChar = newChar.toUpperCase().trim();
         if(charTooLong.or(notAlphabet).test(newChar)) return '0';

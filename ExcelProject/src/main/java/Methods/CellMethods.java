@@ -4,6 +4,7 @@ import Inputs.CellInputs;
 import LinkedLists.Sheet;
 import Model.Cell;
 
+
 public class CellMethods extends CellInputs {
 
     public boolean enterNewCell(Sheet currentSheet){
@@ -28,7 +29,7 @@ public class CellMethods extends CellInputs {
         int row = setRow();
         return cur.searchSheet(col, row);
     }
-    
+
     public boolean updateCell(Sheet currentSheet){
         System.out.println("*** Update Cell ***");
         char col = setColumn();
@@ -53,4 +54,12 @@ public class CellMethods extends CellInputs {
                 deleteThis.getRow());
     }
 
+    public void viewAllCells(Sheet currentSheet){
+        System.out.println("*** View All Cells ***");
+        if(currentSheet.getCellSize() != 0){
+            currentSheet.viewAllCells();
+            return;
+        }
+        System.out.println("Sheet Is Currently Empty!\n");
+    }
 }

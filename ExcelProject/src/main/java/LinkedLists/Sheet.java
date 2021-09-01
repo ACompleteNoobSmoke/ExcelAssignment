@@ -76,7 +76,7 @@ public class Sheet {
     //Public method for removing Model.Cell from Linked List
     public boolean removeToList(char column, int row){
         if(!isEmpty() && cellExists(column, row)){
-            return removeTail(column, row);
+            return removeByColRow(column, row);
         }
         return false;
     }
@@ -86,7 +86,7 @@ public class Sheet {
         char cellColumn = updateThis.getColumn();
         int cellRow = updateThis.getRow();
         String cellContent = updateThis.getContent();
-        if(cellExists(cellColumn, cellRow)) return insertToList(updateThis);
+        if(!cellExists(cellColumn, cellRow)) return insertToList(updateThis);
         return updated(cellColumn, cellRow, cellContent);
     }
 
@@ -134,7 +134,7 @@ public class Sheet {
         return true;
     }
 
-    private boolean removeTail(char column, int row){
+    private boolean removeByColRow(char column, int row){
         if(checkColRow(Head, column, row) != null){
             return removeHead();
         }
@@ -144,10 +144,23 @@ public class Sheet {
             if(remove != null){ break; }
             current = current.getNext();
         }
+        if(current.getNext() == null) return removeTail(column, row);
         current.getNext().setPrev(current.getPrev());
         current.getPrev().setNext(current.getNext());
         cellSize--;
         return true;
+    }
+
+    private boolean removeTail(char column, int row){
+        CellNode current = Head;
+        while(current != null){
+            Cell remove = checkColRow(current, column, row);
+            if(remove != null){ break; }
+            current = current.getNext();
+        }
+        current.getPrev().setNext(null);
+        cellSize--;
+        return  true;
     }
 
     //Searches the cells linked list.
@@ -191,11 +204,12 @@ public class Sheet {
     private boolean updated(char col, int row, String content){
         CellNode current = Head;
         while(current != null){
-            if(checkColRow(current, col, row) != null){break;}
+            if(checkColRow(current, col, row) != null){
+                current.getCell().setContent(content); return true;
+            }
             current = current.getNext();
         }
-        current.getCell().setContent(content);
-        return true;
+        return false;
     }
 
 }
