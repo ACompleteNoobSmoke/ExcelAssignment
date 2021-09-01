@@ -26,6 +26,6 @@ public class CellInputs extends ScannerInput {
             System.out.print("Please Enter Content: ");
             content = supplyString.get();
         }
-        return content;
+        return content.trim();
     }
 }

@@ -42,7 +42,7 @@ public class ScannerInput {
     private char setChar(){
         String newChar = " ";
         newChar = supplyString.get();
-        newChar = newChar.toUpperCase();
+        newChar = newChar.toUpperCase().trim();
         if(charTooLong.or(notAlphabet).test(newChar)) return '0';
         return newChar.charAt(0);
     }

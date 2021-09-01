@@ -58,15 +58,16 @@ public class Sheet {
         return cellSize == 0;
     }
 
-    public boolean cellExists(Cell newCell){
-        return searchSheet(newCell.getColumn(), newCell.getRow()) != null ? true : false;
+    public boolean cellExists(char col, int row){
+        return searchSheet(col, row) != null ? true : false;
     }
 
 
 
     //Public method for inserting Model.Cell into the Linked List
     public boolean insertToList(Cell newCell){
-        if(!isMax() && !cellExists(newCell)){
+        char col = newCell.getColumn(); int row = newCell.getRow();
+        if(!isMax() && !cellExists(col, row)){
             return insertTail(newCell);
         }
         return false;
@@ -74,8 +75,7 @@ public class Sheet {
 
     //Public method for removing Model.Cell from Linked List
     public boolean removeToList(char column, int row){
-        Cell removeThis = new Cell(column, row);
-        if(!isEmpty() && cellExists(removeThis)){
+        if(!isEmpty() && cellExists(column, row)){
             return removeTail(column, row);
         }
         return false;
@@ -86,7 +86,7 @@ public class Sheet {
         char cellColumn = updateThis.getColumn();
         int cellRow = updateThis.getRow();
         String cellContent = updateThis.getContent();
-        if(searchSheet(cellColumn, cellRow) == null) { return insertToList(updateThis); }
+        if(cellExists(cellColumn, cellRow)) return insertToList(updateThis);
         return updated(cellColumn, cellRow, cellContent);
     }
 
