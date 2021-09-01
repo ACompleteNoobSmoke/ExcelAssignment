@@ -13,9 +13,8 @@ public class UserMethods extends UserInput {
         String lastName = setUserLastName();
         String userName = setUserName2(users);
         String passWord = setPassword();
-        User newUser = new User(firstName, lastName, userName, passWord);
-        users.add(newUser);
-        return newUser;
+        users.add(new User(firstName, lastName, userName, passWord));
+        return users.getObjectByName(userName);
     }
 
     //Use for login to get user from user manager

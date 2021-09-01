@@ -91,7 +91,7 @@ public class ExcelManager extends Manager<ExcelFile> {
 
     @Override
     //Check Array if ExcelFile name exists already;
-    protected boolean existingObjectName(String ExcelFileName){
+    public boolean existingObjectName(String ExcelFileName){
         if(!isEmpty.test(fileSize)){
             for(int i = 0;  i < fileSize; i++){
                 if(sameName.test(ExcelFileName, files[i])) return true;

@@ -1,5 +1,7 @@
 package Inputs;
 
+import ObjectManager.ExcelManager;
+
 public class ExcelInputs extends AbstractInputs{
 
 
@@ -19,6 +21,22 @@ public class ExcelInputs extends AbstractInputs{
             number = supplyInt.get();
         }
         return number;
+    }
+
+    public String setName2(ExcelManager excelManage){
+        boolean exists = true;
+        String fileName = "";
+        while(exists){
+            fileName = setName();
+            exists = excelManage.existingObjectName(fileName);
+            errorMessage(exists, fileName);
+        }
+        return fileName;
+    }
+
+    private void errorMessage(boolean exists, String fileName){
+        if(exists)
+            System.out.println("File Name: " + fileName + " Already Exists.");
     }
 
     public String setUpdatedName(){

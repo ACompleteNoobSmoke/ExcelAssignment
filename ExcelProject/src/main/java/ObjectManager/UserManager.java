@@ -2,7 +2,6 @@ package ObjectManager;
 
 import Model.User;
 
-import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
@@ -94,7 +93,7 @@ public class UserManager extends Manager<User> {
 
     @Override
     //Check Array if User name exists already;
-    protected boolean existingObjectName(String UserName){
+    public boolean existingObjectName(String UserName){
         if(!isEmpty.test(userSize)){
             for(int i = 0;  i < userSize; i++){
                 if(sameName.test(UserName, userProfiles[i])) return true;

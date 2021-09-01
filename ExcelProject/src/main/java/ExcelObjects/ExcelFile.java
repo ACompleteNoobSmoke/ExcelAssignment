@@ -18,6 +18,12 @@ public class ExcelFile extends Manager<Sheet> {
         this.sheetSize = 0;
     }
 
+    public ExcelFile(String fileName){
+        this.fileName = fileName;
+        this.fileNumber = sheetSize + 1;
+        this.sheetSize = 0;
+    }
+
     public String getFileName(){ return fileName; }
     public void setFileName(String fileName){ this.fileName = fileName; }
     public void setFileNumber(int fileNumber){ this.fileNumber = fileNumber; }
