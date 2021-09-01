@@ -19,9 +19,7 @@ public class ExcelFile extends Manager<Sheet> {
     }
 
     public ExcelFile(String fileName){
-        this.fileName = fileName;
-        this.fileNumber = sheetSize + 1;
-        this.sheetSize = 0;
+        this(fileName, sheetSize + 1);
     }
 
     public String getFileName(){ return fileName; }
@@ -104,7 +102,7 @@ public class ExcelFile extends Manager<Sheet> {
 
     @Override
     //Check Array if sheet name exists already;
-    protected boolean existingObjectName(String sheetName){
+    public boolean existingObjectName(String sheetName){
         if(!isEmpty.test(sheetSize)){
             for(int i = 0;  i < sheetSize; i++){
                 if(sameName.test(sheetName, excelSheets[i])) return true;

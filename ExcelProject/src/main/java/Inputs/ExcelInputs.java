@@ -11,7 +11,7 @@ public class ExcelInputs extends AbstractInputs{
             System.out.print("Please Enter File Name: ");
             fileName = supplyString.get();
         }
-        return fileName;
+        return fileName.trim();
     }
 
     public int setNumber(){
@@ -45,7 +45,7 @@ public class ExcelInputs extends AbstractInputs{
             System.out.print("Please Enter Updated File Name: ");
             updatedName = supplyString.get();
         }
-        return updatedName;
+        return updatedName.trim();
     }
 
 }

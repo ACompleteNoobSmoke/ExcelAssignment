@@ -12,7 +12,7 @@ public class UserInput extends ScannerInput{
             System.out.print("Please Enter First Name: ");
             firstName = supplyString.get();
         }
-        return firstName;
+        return firstName.trim();
     }
 
     public String setUserLastName(){
@@ -21,7 +21,7 @@ public class UserInput extends ScannerInput{
             System.out.print("Please Enter Last Name: ");
             lastName = supplyString.get();
         }
-        return lastName;
+        return lastName.trim();
     }
 
     public String setUserName(){
@@ -30,7 +30,7 @@ public class UserInput extends ScannerInput{
             System.out.print("Please Enter UserName: ");
             userName = supplyString.get();
         }
-        return userName;
+        return userName.trim();
     }
 
     public String setUserName2(UserManager uManager){
@@ -59,6 +59,6 @@ public class UserInput extends ScannerInput{
             System.out.print("Please Enter PassWord: ");
             passWord = supplyString.get();
         }
-        return passWord;
+        return passWord.trim();
     }
 }

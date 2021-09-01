@@ -9,9 +9,8 @@ public class ExcelMethods extends ExcelInputs {
     public ExcelFile createNewFile(ExcelManager eManager){
         System.out.println("*** Create Excel File ***");
         String fileName = setName2(eManager);
-        ExcelFile newFile = new ExcelFile(fileName);
-        eManager.add(newFile);
-        return newFile;
+        eManager.add(new ExcelFile(fileName));
+        return eManager.getObjectByName(fileName);
     }
 
     public ExcelFile searchFile(ExcelManager eManager){
