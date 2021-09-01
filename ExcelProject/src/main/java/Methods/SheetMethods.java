@@ -3,8 +3,6 @@ package Methods;
 import ExcelObjects.ExcelFile;
 import Inputs.SheetInputs;
 import LinkedLists.Sheet;
-import Model.User;
-import ObjectManager.ExcelManager;
 
 public class SheetMethods extends SheetInputs {
 
@@ -47,18 +45,5 @@ public class SheetMethods extends SheetInputs {
             return;
         }
         excelFile.showAll();
-    }
-
-    public static void main(String[] args) {
-        SheetMethods sheetMethods = new SheetMethods();
-        User newUser = new User("Osaretin", "Omofonmwan", "OsoInfinite95", "Oso");
-        ExcelManager uManage = newUser.getExcelManager();
-        ExcelFile myFile = new ExcelFile("FileNumber1");
-        uManage.add(myFile);
-        myFile = uManage.getObjectByName("FileNumber1");
-        sheetMethods.createNewSheet(myFile);
-        sheetMethods.createNewSheet(myFile);
-        newUser.getExcelManager().getObjectByName("FileNumber1").showAll();
-
     }
 }
