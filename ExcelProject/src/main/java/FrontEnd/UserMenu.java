@@ -1,6 +1,8 @@
 package FrontEnd;
 
+import ExcelObjects.ExcelFile;
 import Inputs.ScannerInput;
+import ObjectManager.ExcelManager;
 
 public class UserMenu {
 
@@ -11,7 +13,7 @@ public class UserMenu {
             System.out.println("1. New User");
             System.out.println("2. Returning User");
             System.out.println("3. Exit");
-            System.out.println("\nAction: ");
+            System.out.print("\nAction: ");
             menu = new ScannerInput().supplyInt.get();
         }
         return menu;
@@ -23,15 +25,29 @@ public class UserMenu {
             System.out.println("*** Excel Menu ***");
             System.out.println("Hello " + userName +"\n");
             System.out.println("1. Create New File");
-            System.out.println("2. Update File Name");
-            System.out.println("3. Search File");
+            System.out.println("2. Search File");
+            System.out.println("3. Update File Name");
             System.out.println("4. Delete File");
             System.out.println("5. View All Files");
-            System.out.println("6. Log Out");
-            System.out.println("\nAction: ");
+            System.out.println("6. Back");
+            System.out.print("\nAction: ");
             menuChoice = new ScannerInput().supplyInt.get();
         }
         return menuChoice;
+    }
+
+    public int optionMenu(String userName){
+        int optionChoice = 0;
+        while(optionChoice < 1 || optionChoice > 4){
+            System.out.println("*** Option Menu ***");
+            System.out.println("1. Excel Options");
+            System.out.println("2. Sheet Options");
+            System.out.println("3. Cell Options");
+            System.out.println("4. Log Out");
+            System.out.print("\nAction: ");
+            optionChoice = new ScannerInput().supplyInt.get();
+        }
+        return optionChoice;
     }
 
     public int sheetMenu(String fileName){
@@ -45,7 +61,7 @@ public class UserMenu {
             System.out.println("4. Delete Sheet");
             System.out.println("5. View All Sheets");
             System.out.println("6. Back");
-            System.out.println("\nAction: ");
+            System.out.print("\nAction: ");
             sheetChoice = new ScannerInput().supplyInt.get();
         }
         return sheetChoice;
@@ -62,7 +78,7 @@ public class UserMenu {
             System.out.println("4. Delete Cell");
             System.out.println("5. View All Cells");
             System.out.println("6. Back");
-            System.out.println("\nAction: ");
+            System.out.print("\nAction: ");
             cellChoice = new ScannerInput().supplyInt.get();
         }
         return cellChoice;

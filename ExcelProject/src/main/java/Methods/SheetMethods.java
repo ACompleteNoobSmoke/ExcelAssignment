@@ -3,23 +3,24 @@ package Methods;
 import ExcelObjects.ExcelFile;
 import Inputs.SheetInputs;
 import LinkedLists.Sheet;
+import ObjectManager.ExcelManager;
 
 public class SheetMethods extends SheetInputs {
 
-    public Sheet createNewSheet(ExcelFile excelfile){
+    private Sheet createNewSheet(ExcelFile excelfile){
         System.out.println("*** Create New Sheet ***");
         String sheetName = setName2(excelfile);
         excelfile.add(new Sheet(sheetName));
         return excelfile.getObjectByName(sheetName);
     }
 
-    public Sheet searchSheetFile(ExcelFile excelFile){
+    private Sheet searchSheetFile(ExcelFile excelFile){
         System.out.println("*** Search Sheet File ***");
         String sheetName = setName();
         return excelFile.search(sheetName);
     }
 
-    public void updateSheetName(ExcelFile excelFile){
+    private void updateSheetName(ExcelFile excelFile){
         System.out.println("*** Update Sheet Name ***");
         String sheetName = setName();
         String updatedSheetName = setUpdatedName();
@@ -29,7 +30,7 @@ public class SheetMethods extends SheetInputs {
         System.out.println(message + "\n");
     }
 
-    public void removeSheetFile(ExcelFile excelFile){
+    private void removeSheetFile(ExcelFile excelFile){
         System.out.println("*** Remove Sheet File ***");
         String sheetName = setName();
         boolean deleted = excelFile.remove(sheetName);
@@ -38,12 +39,22 @@ public class SheetMethods extends SheetInputs {
         System.out.println(message + "\n");
     }
 
-    public void viewAllFiles(ExcelFile excelFile){
+    private void viewAllSheets(ExcelFile excelFile){
         System.out.println("*** View All Files ***\n");
         if(excelFile.getSheetSize() == 0){
             System.out.println("Database Is Currently Empty\n");
             return;
         }
         excelFile.showAll();
+    }
+
+    public void sheetMethodVoidSwitch(int sheetMenuInput, ExcelFile excelFile){
+        switch (sheetMenuInput){
+            case 1: createNewSheet(excelFile); break;
+            case 2: updateSheetName(excelFile); break;
+            case 3: searchSheetFile(excelFile); break;
+            case 4: removeSheetFile(excelFile); break;
+            case 5: viewAllSheets(excelFile); break;
+        }
     }
 }

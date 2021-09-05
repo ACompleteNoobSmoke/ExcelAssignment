@@ -62,4 +62,14 @@ public class CellMethods extends CellInputs {
         }
         System.out.println("Sheet Is Currently Empty!\n");
     }
+
+    public void cellMethodVoidOptions(int input, Sheet currentSheet){
+        switch (input){
+            case 1: enterNewCell(currentSheet); break;
+            case 2: updateCell(currentSheet); break;
+            case 3: searchCell(currentSheet); break;
+            case 4: deleteCell(currentSheet); break;
+            case 5: viewAllCells(currentSheet); break;
+        }
+    }
 }

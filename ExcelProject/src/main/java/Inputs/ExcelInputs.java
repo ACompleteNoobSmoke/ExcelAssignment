@@ -47,5 +47,4 @@ public class ExcelInputs extends AbstractInputs{
         }
         return updatedName.trim();
     }
-
 }
