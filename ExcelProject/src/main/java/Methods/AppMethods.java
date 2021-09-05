@@ -29,14 +29,12 @@ public class AppMethods {
           optionInput  = new UserMenu().optionMenu(userName);
           if(optionInput == 4) break;
           Object useThis = getObject(optionInput, currentUser);
-          if(useThis != null) optionAction(useThis, currentUser);
+          if(useThis != null) optionAction(useThis, userName);
         }
     }
 
-    private void optionAction(Object currentObject, User currentUser){
-        String name = "";
+    private void optionAction(Object currentObject, String name){
         if(currentObject instanceof ExcelManager){
-            name = currentUser.getUserName();
             excelMenuMethod(name, (ExcelManager)currentObject);
         }else if(currentObject instanceof ExcelFile){
             sheetMenuMethod((ExcelFile)currentObject);
