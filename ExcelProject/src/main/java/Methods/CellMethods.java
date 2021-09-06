@@ -7,7 +7,8 @@ import Model.Cell;
 
 public class CellMethods extends CellInputs {
 
-    public boolean enterNewCell(Sheet currentSheet){
+    //Enter the new cell into sheet
+    private boolean enterNewCell(Sheet currentSheet){
         System.out.println("*** Create New Cell ***");
         char col = setColumn();
         int row = setRow();
@@ -16,6 +17,7 @@ public class CellMethods extends CellInputs {
         return currentSheet.insertToList(new Cell(col, row, content));
     }
 
+    //Check the sheet if the cell exists already
     private boolean checkIfExists(Sheet cur, char col, int row){
         if(cur.cellExists(col, row)){
             System.out.println("Cell Exists");
@@ -24,13 +26,16 @@ public class CellMethods extends CellInputs {
         return false;
     }
 
+    //Returns cell based on the column and row
     private Cell getCell(Sheet cur){
         char col = setColumn();
         int row = setRow();
         return cur.searchSheet(col, row);
     }
 
-    public boolean updateCell(Sheet currentSheet){
+    //Updates the cell if it exists in the sheet
+    // or it will be inserted into the sheet if it is not
+    private boolean updateCell(Sheet currentSheet){
         System.out.println("*** Update Cell ***");
         char col = setColumn();
         int row = setRow();
@@ -38,23 +43,27 @@ public class CellMethods extends CellInputs {
         return currentSheet.updateCell(new Cell(col, row, content));
     }
 
-    public Cell searchCell(Sheet currentSheet){
+    //Searches the sheet for a particular cell
+    private Cell searchCell(Sheet currentSheet){
         System.out.println("*** Search Cell ***");
         return getCell(currentSheet);
     }
 
-    public void deleteCell(Sheet currentSheet){
+    //Searches and deletes a cell if it exists in the sheet
+    private void deleteCell(Sheet currentSheet){
         System.out.println("*** Delete Cell ***");
         Cell deleteThis = getCell(currentSheet);
         if(deleteThis == null){
             System.out.println("Cell Does Not Exist");
             return;
         }
-        currentSheet.removeToList(deleteThis.getColumn(),
-                deleteThis.getRow());
+        char col = deleteThis.getColumn();
+        int row = deleteThis.getRow();
+        currentSheet.removeToList(col, row);
     }
 
-    public void viewAllCells(Sheet currentSheet){
+    //Prints all the cells that exists in the sheet
+    private void viewAllCells(Sheet currentSheet){
         System.out.println("*** View All Cells ***");
         if(currentSheet.getCellSize() != 0){
             currentSheet.viewAllCells();
@@ -63,6 +72,7 @@ public class CellMethods extends CellInputs {
         System.out.println("Sheet Is Currently Empty!\n");
     }
 
+    //Performs a cell method based on the user input choice
     public void cellMethodVoidOptions(int input, Sheet currentSheet){
         switch (input){
             case 1: enterNewCell(currentSheet); break;

@@ -3,10 +3,10 @@ package Methods;
 import ExcelObjects.ExcelFile;
 import Inputs.SheetInputs;
 import LinkedLists.Sheet;
-import ObjectManager.ExcelManager;
 
 public class SheetMethods extends SheetInputs {
 
+    //Creates new sheet and adds to excel file
     private Sheet createNewSheet(ExcelFile excelfile){
         System.out.println("*** Create New Sheet ***");
         String sheetName = setName2(excelfile);
@@ -14,12 +14,14 @@ public class SheetMethods extends SheetInputs {
         return excelfile.getObjectByName(sheetName);
     }
 
+    //Searches the excel file for sheet
     private Sheet searchSheetFile(ExcelFile excelFile){
         System.out.println("*** Search Sheet File ***");
         String sheetName = setName();
         return excelFile.search(sheetName);
     }
 
+    //Updates the sheet name in the excel file
     private void updateSheetName(ExcelFile excelFile){
         System.out.println("*** Update Sheet Name ***");
         String sheetName = setName();
@@ -30,6 +32,7 @@ public class SheetMethods extends SheetInputs {
         System.out.println(message + "\n");
     }
 
+    //Removes the sheet from the excel file
     private void removeSheetFile(ExcelFile excelFile){
         System.out.println("*** Remove Sheet File ***");
         String sheetName = setName();
@@ -39,6 +42,7 @@ public class SheetMethods extends SheetInputs {
         System.out.println(message + "\n");
     }
 
+    //Prints out all the sheet in the excel file
     private void viewAllSheets(ExcelFile excelFile){
         System.out.println("*** View All Files ***\n");
         if(excelFile.getSheetSize() == 0){
@@ -48,6 +52,7 @@ public class SheetMethods extends SheetInputs {
         excelFile.showAll();
     }
 
+    //Performs method based on the user choice input
     public void sheetMethodVoidSwitch(int sheetMenuInput, ExcelFile excelFile){
         switch (sheetMenuInput){
             case 1: createNewSheet(excelFile); break;

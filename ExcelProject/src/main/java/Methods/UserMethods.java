@@ -7,7 +7,7 @@ import ObjectManager.UserManager;
 public class UserMethods extends UserInput {
 
     //Use for registration and save into UserManager
-    public User enterNewUser(UserManager users){
+    private User enterNewUser(UserManager users){
         System.out.println("*** New User ***");
         String firstName = setUserFirstName();
         String lastName = setUserLastName();
@@ -18,7 +18,7 @@ public class UserMethods extends UserInput {
     }
 
     //Use for login to get user from user manager
-    public User returningUser(UserManager users){
+    private User returningUser(UserManager users){
         System.out.println("*** Returning User ***");
         String userName = setUserName();
         String passWord = setPassword();
@@ -27,7 +27,13 @@ public class UserMethods extends UserInput {
 
     //Use to search for user in the user manager
     private User searchUser(UserManager users){
+        System.out.println("*** Search User ***");
         String searchUserName = setUserName();
         return users.getObjectByName(searchUserName);
+    }
+
+    //Gets user based on the option the user picks
+    public User getUserByOption(int userOption, UserManager uManager){
+        return userOption == 1 ? enterNewUser(uManager) : returningUser(uManager);
     }
 }

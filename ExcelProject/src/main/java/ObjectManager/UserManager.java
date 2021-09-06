@@ -7,8 +7,10 @@ import java.util.function.Predicate;
 
 public class UserManager extends Manager<User> {
 
+    //Array of user objects
     private User[] userProfiles;
 
+    //Amount of users in the array
     private static int userSize;
 
     public UserManager(){

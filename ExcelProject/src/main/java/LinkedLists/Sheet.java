@@ -10,11 +10,9 @@ public class Sheet {
     private int sheetNumber;
     private CellNode Head;
     private int cellSize;
-    private int Max = 500;
+    private final int Max = 500;
 
-    public Sheet(){
-
-    }
+    public Sheet(){}
 
     public Sheet(String name){
         this.sheetName = name;
@@ -30,34 +28,42 @@ public class Sheet {
         this.Head = null;
     }
 
+    //Returns the sheet name
     public String getSheetName(){
         return sheetName;
     }
 
+    //Sets the sheet name
     public void setSheetName(String name){
         this.sheetName = name;
     }
 
+    //Returns the sheet number
     public int getSheetNumber(){
         return sheetNumber;
     }
 
+    //Set the sheet number
     public void setSheetNumber(int number){
         this.sheetNumber = number;
     }
 
+    //Returns the amount of cells in the current sheet
     public int getCellSize(){
         return cellSize;
     }
 
-    private boolean isMax(){
+    //Checks if the sheet is full
+    private boolean isFull(){
         return cellSize == Max;
     }
 
+    //Checks if the sheet is empty
     private boolean isEmpty(){
         return cellSize == 0;
     }
 
+    //Helper method if the cell exists in the sheet
     public boolean cellExists(char col, int row){
         return searchSheet(col, row) != null ? true : false;
     }
@@ -67,7 +73,7 @@ public class Sheet {
     //Public method for inserting Model.Cell into the Linked List
     public boolean insertToList(Cell newCell){
         char col = newCell.getColumn(); int row = newCell.getRow();
-        if(!isMax() && !cellExists(col, row)){
+        if(!isFull() && !cellExists(col, row)){
             return insertTail(newCell);
         }
         return false;
@@ -124,6 +130,7 @@ public class Sheet {
         return true;
     }
 
+    //Remove the first of the Linked List
     private boolean removeHead(){
         if(cellSize == 1){
             Head = null;
@@ -134,6 +141,7 @@ public class Sheet {
         return true;
     }
 
+    //Remove node based on the column and row
     private boolean removeByColRow(char column, int row){
         if(checkColRow(Head, column, row) != null){
             return removeHead();
@@ -151,6 +159,7 @@ public class Sheet {
         return true;
     }
 
+    //Remove the last node element
     private boolean removeTail(char column, int row){
         CellNode current = Head;
         while(current != null){
@@ -201,6 +210,7 @@ public class Sheet {
         }
     }
 
+    //Updates a node based on the column and row
     private boolean updated(char col, int row, String content){
         CellNode current = Head;
         while(current != null){

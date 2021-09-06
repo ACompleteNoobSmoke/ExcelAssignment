@@ -8,7 +8,7 @@ public abstract class Manager<T> {
     //Upscale the sheets array
     protected void upscale(){}
 
-    //Resize Array -- Passed
+    //Resize Array
     protected T[] decrease(String name) {
        return null;
     }

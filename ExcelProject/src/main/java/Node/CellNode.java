@@ -8,9 +8,7 @@ public class CellNode {
     private CellNode prev;
     private CellNode next;
 
-    public CellNode(){
-
-    }
+    public CellNode(){}
 
     public CellNode(Cell newCell){
         this.cell = newCell;

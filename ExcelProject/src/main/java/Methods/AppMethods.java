@@ -2,6 +2,7 @@ package Methods;
 
 import ExcelObjects.ExcelFile;
 import FrontEnd.UserMenu;
+import Inputs.ScannerInput;
 import LinkedLists.Sheet;
 import Model.User;
 import ObjectManager.ExcelManager;
@@ -15,24 +16,30 @@ public class AppMethods {
         uManager = new UserManager();
     }
 
-    public User mainMenuMethod(){
-        int mainMenuInput = new UserMenu().mainMenu();
-        if(mainMenuInput == 3) System.exit(0);
-        return mainMenuInput == 1 ? new UserMethods().enterNewUser(uManager)
-                : new UserMethods().returningUser(uManager);
+    private void createSpace(){System.out.println();}
+
+    //Main Method Menu
+    public User mainMenuMethod(UserMenu menu){
+        int mainMenuInput = menu.mainMenu();
+        if(mainMenuInput == 3){ new ScannerInput().closeScanner(); System.exit(0);}
+        createSpace();
+        return new UserMethods().getUserByOption(mainMenuInput, uManager);
     }
 
-    public void optionMenu(User currentUser){
+    //Option Menu For Either Excel, Sheet or Cell
+    public void optionMenu(User currentUser, UserMenu menu){
         String userName = currentUser.getUserName();
         int optionInput = 0;
         while(optionInput != 4){
-          optionInput  = new UserMenu().optionMenu(userName);
+          optionInput  = menu.optionMenu(userName);
+          createSpace();
           if(optionInput == 4) break;
           Object useThis = getObject(optionInput, currentUser);
           if(useThis != null) optionAction(useThis, userName);
         }
     }
 
+    //Performs actions based on the object that is passed
     private void optionAction(Object currentObject, String name){
         if(currentObject instanceof ExcelManager){
             excelMenuMethod(name, (ExcelManager)currentObject);
@@ -43,6 +50,7 @@ public class AppMethods {
         }
     }
 
+    //Returns Excel, Sheet or Cell object based on the option picked by the user
     private Object getObject(int optionInput, User currentUser){
         ExcelManager eManage = currentUser.getExcelManager();
         Object returnThis = eManage;
@@ -57,6 +65,9 @@ public class AppMethods {
         return returnThis;
     }
 
+    //********************************* OBJECT METHODS *********************************************//
+
+    //Performs excel methods based on the input choice
     private void excelMenuMethod(String userName, ExcelManager eManager){
         int excelMenuInput = 0;
         while(excelMenuInput != 6){
@@ -65,6 +76,7 @@ public class AppMethods {
         }
     }
 
+    //Performs sheet methods based on the input choice
     private void sheetMenuMethod(ExcelFile file){
         int sheetMenuInput = 0;
         String fileName = file.getFileName();
@@ -74,6 +86,7 @@ public class AppMethods {
         }
     }
 
+    //Performs cell methods based on the input choice
     private void cellMenuMethod(Sheet sheet){
         int cellMenuInput = 0;
         String sheetName = sheet.getSheetName();

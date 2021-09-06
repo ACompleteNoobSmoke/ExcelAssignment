@@ -6,8 +6,7 @@ public class Cell {
     private String content = " ";
     private boolean isFilled;
 
-    public Cell(){
-    }
+    public Cell(){}
 
     public Cell(char column, int row){
         this.column = column;

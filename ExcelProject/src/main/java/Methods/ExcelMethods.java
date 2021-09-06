@@ -2,11 +2,11 @@ package Methods;
 
 import ExcelObjects.ExcelFile;
 import Inputs.ExcelInputs;
-import Inputs.ScannerInput;
 import ObjectManager.ExcelManager;
 
 public class ExcelMethods extends ExcelInputs {
 
+    //Creates a new file and adds it to local databse
     private ExcelFile createNewFile(ExcelManager eManager){
         System.out.println("*** Create Excel File ***");
         String fileName = setName2(eManager);
@@ -14,12 +14,17 @@ public class ExcelMethods extends ExcelInputs {
         return eManager.getObjectByName(fileName);
     }
 
+    //Searches the local database for an excel file
     private ExcelFile searchFile(ExcelManager eManager){
         System.out.println("*** Search Excel File ***");
         String fileName = setName();
-        return eManager.search(fileName);
+        ExcelFile foundFile = eManager.search(fileName);
+        if(foundFile == null)
+            System.out.println(fileName + " Could Not Be Found\n");
+        return foundFile;
     }
 
+    //Update the excel file name in the local database
     private void updateFileName(ExcelManager eManager){
         System.out.println("*** Update File Name ***");
         String fileName = setName();
@@ -30,6 +35,7 @@ public class ExcelMethods extends ExcelInputs {
         System.out.println(message + "\n");
     }
 
+    //Removes an excel file from the local database
     private void removeFile(ExcelManager eManager){
         System.out.println("*** Remove Excel File ***");
         String fileName = setName();
@@ -39,6 +45,7 @@ public class ExcelMethods extends ExcelInputs {
         System.out.println(message + "\n");
     }
 
+    //Prints all of the existing excel file in the local database
     private void viewAllFiles(ExcelManager excelManager){
         System.out.println("*** View All Files ***\n");
         if(excelManager.getfileSize() == 0){
@@ -48,6 +55,7 @@ public class ExcelMethods extends ExcelInputs {
         excelManager.showAll();
     }
 
+    //Performs excel method based on the user input choice
     public void excelMethodVoidSwitch(int excelMenuInput, ExcelManager eManager){
         switch (excelMenuInput){
             case 1: createNewFile(eManager); break;

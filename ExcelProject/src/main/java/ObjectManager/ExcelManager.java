@@ -50,7 +50,7 @@ public class ExcelManager extends Manager<ExcelFile> {
     }
 
     @Override
-    //Resize Array -- Passed
+    //Resize Array
     protected ExcelFile[] decrease(String ExcelFileName) {
         ExcelFile []lessExcelFile = new ExcelFile[fileSize-1];
         int j = 0;
