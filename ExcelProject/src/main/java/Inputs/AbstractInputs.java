@@ -2,6 +2,7 @@ package Inputs;
 
 public abstract class AbstractInputs extends ScannerInput {
 
+    //Used to set the name of excel file or sheet name
     public String setName(){
         String fileName = "";
         while(fileName.isBlank()) {
@@ -11,6 +12,7 @@ public abstract class AbstractInputs extends ScannerInput {
         return fileName;
     }
 
+    //Used to set the number for excel file or sheet number
     public int setNumber(){
         int number = 0;
         while(number == 0){
@@ -20,6 +22,7 @@ public abstract class AbstractInputs extends ScannerInput {
         return number;
     }
 
+    //Used to set the updated name for excel file or sheet name
     public String setUpdatedName(){
         String updatedName = "";
         while(updatedName.isBlank()){

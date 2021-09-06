@@ -6,6 +6,7 @@ import java.util.function.BiFunction;
 
 public class UserInput extends ScannerInput{
 
+    //User inputs the first name
     public String setUserFirstName(){
         String firstName = "";
         while(firstName.isBlank()) {
@@ -15,6 +16,7 @@ public class UserInput extends ScannerInput{
         return firstName.trim();
     }
 
+    //User inputs the last name
     public String setUserLastName(){
         String lastName = "";
         while(lastName.isBlank()) {
@@ -24,6 +26,7 @@ public class UserInput extends ScannerInput{
         return lastName.trim();
     }
 
+    //User inputs the user name
     public String setUserName(){
         String userName = "";
         while(userName.isBlank()) {
@@ -33,6 +36,10 @@ public class UserInput extends ScannerInput{
         return userName.trim();
     }
 
+    //Helper method to see if the username exists.
+    public BiFunction<String, UserManager, Boolean> setUserNameAndValidate = (n, u) -> u.getObjectByName(n) != null;
+
+    //User inputs the user name and checks if the user name already exists
     public String setUserName2(UserManager uManager){
         boolean exists = true;
         String userName = "";
@@ -44,15 +51,14 @@ public class UserInput extends ScannerInput{
         return userName;
     }
 
+    //If user name already exists it prints out a warning message
     private void userNameErrorMessage(boolean exists, String userName){
         if(exists){
             System.out.println("\nUserName: " + userName + " Already Exists In Database!\n");
         }
-
     }
 
-    public BiFunction<String, UserManager, Boolean> setUserNameAndValidate = (n, u) -> u.getObjectByName(n) != null;
-
+    //User inputs the password
     public String setPassword(){
         String passWord = "";
         while(passWord.isBlank()) {

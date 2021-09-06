@@ -61,7 +61,7 @@ public class ExcelFile extends Manager<Sheet> {
     }
 
     @Override
-    //Resize Array -- Passed
+    //Resize Array
     protected Sheet[] decrease(String sheetName) {
         Sheet []lessSheet = new Sheet[sheetSize-1];
         int j = 0;

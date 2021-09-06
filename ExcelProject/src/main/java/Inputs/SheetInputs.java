@@ -1,11 +1,11 @@
 package Inputs;
 
 import ExcelObjects.ExcelFile;
-import LinkedLists.Sheet;
-import ObjectManager.ExcelManager;
+
 
 public class SheetInputs extends AbstractInputs{
 
+    //Overridden method to set sheet name
     public String setName(){
         String sheetName = "";
         while(sheetName.isBlank()) {
@@ -15,6 +15,7 @@ public class SheetInputs extends AbstractInputs{
         return sheetName.trim();
     }
 
+    //Used to check if the sheet name already exists
     public String setName2(ExcelFile file){
         boolean exists = true;
         String fileName = "";
@@ -26,11 +27,13 @@ public class SheetInputs extends AbstractInputs{
         return fileName;
     }
 
+    //Used to print a warning if sheet name already exists
     private void errorMessage(boolean exists, String fileName){
         if(exists)
             System.out.println("File Name: " + fileName + " Already Exists.");
     }
 
+    //Overridden method to set sheet number
     public int setNumber(){
         int number = 0;
         while(number == 0){
@@ -40,6 +43,7 @@ public class SheetInputs extends AbstractInputs{
         return number;
     }
 
+    //Overridden method to set updated sheet name
     public String setUpdatedName(){
         String updatedName = "";
         while(updatedName.isBlank()){
