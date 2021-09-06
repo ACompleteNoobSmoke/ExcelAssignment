@@ -15,10 +15,15 @@ public class SheetMethods extends SheetInputs {
     }
 
     //Searches the excel file for sheet
-    private Sheet searchSheetFile(ExcelFile excelFile){
+    private void searchSheetFile(ExcelFile excelFile){
         System.out.println("*** Search Sheet File ***");
         String sheetName = setName();
-        return excelFile.search(sheetName);
+        Sheet foundSheet = excelFile.search(sheetName);
+        if(foundSheet == null){
+            System.out.println(sheetName + " Could Not Be Found");
+            return;
+        }
+        System.out.println(foundSheet.getSheetName());
     }
 
     //Updates the sheet name in the excel file

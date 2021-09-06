@@ -44,9 +44,15 @@ public class CellMethods extends CellInputs {
     }
 
     //Searches the sheet for a particular cell
-    private Cell searchCell(Sheet currentSheet){
+    private void searchCell(Sheet currentSheet){
         System.out.println("*** Search Cell ***");
-        return getCell(currentSheet);
+        Cell foundCell = getCell(currentSheet);
+        if(foundCell == null){
+            System.out.println(currentSheet.getSheetName() +
+                    " Does Not Contain Cell");
+            return;
+        }
+        System.out.println(foundCell);
     }
 
     //Searches and deletes a cell if it exists in the sheet

@@ -15,13 +15,15 @@ public class ExcelMethods extends ExcelInputs {
     }
 
     //Searches the local database for an excel file
-    private ExcelFile searchFile(ExcelManager eManager){
+    private void searchFile(ExcelManager eManager){
         System.out.println("*** Search Excel File ***");
         String fileName = setName();
         ExcelFile foundFile = eManager.search(fileName);
-        if(foundFile == null)
+        if(foundFile == null){
             System.out.println(fileName + " Could Not Be Found\n");
-        return foundFile;
+            return;
+        }
+        System.out.println(foundFile.getFileName());
     }
 
     //Update the excel file name in the local database
